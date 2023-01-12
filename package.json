@@ -1,6 +1,7 @@
 {
-  "name": "@cmarshall92/react-native-image-slider-show",
+  "name": "@buhissopro/react-native-image-slider-show",
   "version": "1.1.0",
+  "private": false,
   "description": "A quick and easy slideshow for react native.",
   "main": "Slideshow.js",
   "scripts": {},
