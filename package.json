@@ -1,24 +1,18 @@
 {
   "name": "react-native-image-slider-show",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A quick and easy slideshow for react native.",
   "main": "Slideshow.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kamalpandey/react-native-image-slider-show.git"
+    "url": "git+https://github.com/CMarshall92/react-native-image-slider-show.git"
   },
   "keywords": [
     "react",
     "native",
     "slideshow"
   ],
-  "author": "Kamal Pandey",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kamalpandey/react-native-image-slider-show/issues"
-  },
-  "homepage": "https://github.com/kamalpandey/react-native-image-slider-show#readme"
+  "author": "Chris Marshall",
+  "homepage": "https://github.com/CMarshall92/react-native-image-slider-show#readme"
 }

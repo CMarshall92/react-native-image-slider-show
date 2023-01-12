@@ -10,80 +10,55 @@ npm install react-native-image-slider-show --save
 ```
 
 ## Usage
+```
+import Slideshow from 'react-native-image-slider-show';
+```
+
+## Autoplay Example
 
 ```javascript
 import Slideshow from 'react-native-image-slider-show';
 
-// ...
-
-render() {
-  return (
-    <Slideshow 
-      dataSource={[
-        { url:'http://placeimg.com/640/480/any' },
-        { url:'http://placeimg.com/640/480/any' },
-        { url:'http://placeimg.com/640/480/any' }
-    ]}/>
-  );
+const fetchImages = async (callback) => {
+  try {
+    axios.defaults.baseURL = API_BASE;
+    const response = await axios.get('/');
+    callback(response.data);
+  } catch (error) {
+    console.error(error);
+  }
 }
-```
-## Autoplay Example
 
-```javascript
-export default class SlideshowTest extends Component {
-  constructor(props) {
-    super(props);
+const SlideshowTest = () => {
+  const [dataSource, setDataSource] = React.useState([]);
+  const [position, setPosition] = React.useState(0);
 
-    this.state = {
-      position: 1,
-      interval: null,
-      dataSource: [
-        {
-          title: 'Title 1',
-          caption: 'Caption 1',
-          url: 'http://placeimg.com/640/480/any',
-        }, {
-          title: 'Title 2',
-          caption: 'Caption 2',
-          url: 'http://placeimg.com/640/480/any',
-        }, {
-          title: 'Title 3',
-          caption: 'Caption 3',
-          url: 'http://placeimg.com/640/480/any',
-        },
-      ],
-    };
-  }
+  React.useEffect(() => {
+    fetchImages((data) => { 
+      setDataSource(data.map((url) => ({ url })))
+    });  
+  }, [])
 
-  componentWillMount() {
-    this.setState({
-      interval: setInterval(() => {
-        this.setState({
-          position: this.state.position === this.state.dataSource.length ? 0 : this.state.position + 1
-        });
-      }, 2000)
-    });
-  }
+  React.useEffect(()=>{
+    const toggle = setInterval(() => {
+      setPosition(
+        position === dataSource.length - 1 ? 0 : position + 1
+      );
+    }, 10000);
 
-  componentWillUnmount() {
-    clearInterval(this.state.interval);
-  }
+    return () => clearInterval(toggle);
+  })
 
-  render() {
-    return (
-    <Slideshow 
-        dataSource={this.state.dataSource}
-        position={this.state.position}
-        onPositionChanged={position => this.setState({ position })} />
-    );
-  }
+  return (
+    <Slideshow position={position} dataSource={dataSource} />
+  )
 }
 ```
 
 ## Props
 
 | Property | Type | isRequired? | Default | Description |
-| --- | :---: | :---: | :---: | --- |
+| -------- | :--: | :---------: | :-----: | ----------- |
 | `dataSource` | bool | required | - | slideshow data |
 | `height` | number | optional | 200 | container height |
 | `position` | number | optional | - | set position slideshow |
@@ -101,6 +76,12 @@ export default class SlideshowTest extends Component {
 | `titleStyle` | object | - | - | custom styles for title |
 | `captionStyle` | object | - | - | custom styles for caption |
 
+## Forked Repo Extended Props
+
+| Property | Type     | isRequired? | Default | Description |
+| -------- | :------: | :---------: | :-----: | ----------- |
+| `hideSideArrows`    | boolean     | false   | changing this allows you to hide the side arrows |
+| `hidePageIndicator` | boolean     | false   | changing this allows you to hide the page indicators |
 
 
 ### Data Structure
@@ -121,14 +102,14 @@ dataSource: [
 ]
 ```
 
-| Property | Type | Description |
-| --- | :---: | --- |
-| `title` | string | title |
-| `caption` | string | caption |
-| `url` | string / number | image (URL or a local file resource) |
+| Property  | Type            | Description                          |
+| --------- | :-------------: | ------------------------------------ |
+| `title`   | string          | title                                |
+| `caption` | string          | caption                              |
+| `url`     | string / number | image (URL or a local file resource) |
 
 ## Credits
-[react-native-image-slider](https://github.com/PaulBGD/react-native-image-slider)
+[react-native-image-slider](https://github.com/CMarshall92/react-native-image-slider-show)
 
 ## License
 MIT
