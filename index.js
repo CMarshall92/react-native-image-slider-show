@@ -74,7 +74,7 @@ export default class Slideshow extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { width } = this.state;
 
     const release = (e, gestureState) => {
