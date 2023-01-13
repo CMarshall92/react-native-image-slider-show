@@ -1,9 +1,9 @@
 {
   "name": "@buhissopro/react-native-image-slider-show",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": false,
   "description": "A quick and easy slideshow for react native.",
-  "main": "Slideshow.js",
+  "main": "index.js",
   "scripts": {},
   "repository": {
     "type": "git",

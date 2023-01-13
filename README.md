@@ -1,13 +1,24 @@
 # react-native-image-slider-show
+
 A quick and easy slideshow for react native. (Android & iOS)
 
-![GIF](demo1.gif) ![GIF](demo2.gif)
+![GIF](/assets/demo1.gif) ![GIF](/assets/demo2.gif)
+
+---
+
+## Installation with expo
+
+```bash
+expo install react-native-image-slider-show --save
+```
 
 ## Installation
 
 ```bash
 npm install react-native-image-slider-show --save
 ```
+
+---
 
 ## Usage
 ```
@@ -55,6 +66,8 @@ const SlideshowTest = () => {
 }
 ```
 
+---
+
 ## Props
 
 | Property | Type | isRequired? | Default | Description |
@@ -83,8 +96,9 @@ const SlideshowTest = () => {
 | `hideSideArrows`    | boolean     | false   | changing this allows you to hide the side arrows |
 | `hidePageIndicator` | boolean     | false   | changing this allows you to hide the page indicators |
 
+---
 
-### Data Structure
+## Data Structure
 
 ```javascript
 // example data structure
@@ -107,6 +121,8 @@ dataSource: [
 | `title`   | string          | title                                |
 | `caption` | string          | caption                              |
 | `url`     | string / number | image (URL or a local file resource) |
+
+---
 
 ## Credits
 [react-native-image-slider](https://github.com/CMarshall92/react-native-image-slider-show)
